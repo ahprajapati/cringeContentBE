@@ -13,13 +13,12 @@ export const getContent = async (req, res) => {
 };
 
 export const createContent = async (req, res) => {
-  const { content, desc } = req.body;
-  console.log(content, desc);
+  const { name, desc } = req.body;
   try {
     const id = await sequenceManager.getId(mongoDB, "content");
     const data = {
       id,
-      content,
+      name,
       desc,
     };
     await contentQueries.createContent(mongoDB, data);
